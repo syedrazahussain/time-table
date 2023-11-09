@@ -20,7 +20,7 @@
 <div class="content">
   <div class="day">
     <div class="select-area">
-      <b id="choose">Choose The Day:</b><select id="ope" onchange="getselected()">
+      <b id="choose">Choose The Day:</b><select id="ope">
       <option >Select Day</option>
       <option value="1">monday</option>
       <option value="2">Tuesday</option>
@@ -29,12 +29,13 @@
       <option value="5">Friday</option>
       <option value="6">Saturday</option>
       </select></div>
+      
     
       <div id="sch">
         <div id="day-heading"><b>Select The Day</b></div>
         <div id="schedule">
           
-          <b>Hello User,<br>University schedule is not Founded please select day if you have a timing between 9:00AM To 5:00PM</b>
+          <b>Hello User,<br>University schedule is not Founded please select day if you have a timing between 9:15AM To 5:00PM</b>
           
         </div>
       </div>
@@ -48,12 +49,12 @@
     <table bgcolor="red">
       <tr bgcolor="blue">
         <th>Timing</th>
-        <th id="t1">09:00 AM To 10:00 AM</th>
-        <th id="t2">10:00 AM To 11:00 AM</th>
-        <th id="t3">11:00 AM To 11:15 AM</th>
-        <th id="t4">11:15 AM To 12:15 PM</th>
-        <th id="t5">12:15 PM To 01:15 PM</th>
-        <th id="t6">01:15 PM To 02:00 PM</th>
+        <th id="t1">09:15 AM To 10:15 AM</th>
+        <th id="t2">10:15 AM To 11:15 AM</th>
+        <th id="t3">11:15 AM To 11:20 AM</th>
+        <th id="t4">11:20 AM To 12:20 PM</th>
+        <th id="t5">12:20 PM To 01:20 PM</th>
+        <th id="t6">01:20 PM To 02:00 PM</th>
         <th id="t7">02:00 PM To 05:00 PM</th>
       </tr>
       <tr bgcolor="yellow">
@@ -76,29 +77,32 @@
   
   </body>
   
+  
   <script text="text/javascript">
-      // function getselected() {
-        
-        
-      // }  
-    function time (date,hr,mn,sc) {
+    
+    function time () {
       
       setInterval((time) => {
         date=new Date();
         hr=date.getHours();
-    mn=date.getMinutes();
-    sc=date.getSeconds();
+        var pm_session="PM";
+        var am_session="AM";
+        let ampm=hr>=12 ? pm_session : am_session
+        mn=date.getMinutes();
+        sc=date.getSeconds();
     
         
-    session="PM"
+    // session="PM"
     
     if (hr>12) {
       hr=hr-12
     }
-    if (hr>=12) {
-      session="AM"
-    }
+    // if (hr>=12) {
+    //   session="AM"
+    // }
     var select=document.getElementById('ope').value;
+
+    
     
 
 // ?-----------------------Monday--------------------------------------------------------
@@ -131,25 +135,50 @@
 
             
             var docx=document.getElementById('schedule').innerHTML;
-              
+            if(ampm==am_session) { 
+              // ---------------------1st period--------------------------
               if(hr==09){
-                  if(mn>=00 && mn<=59) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>09:00 AM To 10:00 AM <br><br><b>Subject:</b>Software Engineering<br><br><b>Faculty Name:</b>Mr.Sivananda sir";
+                  if(mn>=15 && mn<=59) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>09:15 AM To 10:15 AM <br><br><b>Subject:</b>Software Engineering<br><br><b>Faculty Name:</b>Mr.Sivananda sir";
                   let colo=document.querySelector('#p1');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t1');
-                  colo1.style.backgroundColor="green";
+                  colo1.style.bckgroundColor="green";
                   let borde=document.querySelector('#t1');
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p1');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p1');
+                  text.style.color="white";
                   
                    
                 }
+                
               }
+              if (hr==10) {
+                if(mn>=00 && mn<=15) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>09:15 AM To 10:15 AM <br><br><b>Subject:</b>Software Engineering<br><br><b>Faculty Name:</b>Mr.Sivananda sir";
+                  let colo=document.querySelector('#p1');
+                  colo.style.backgroundColor="green";
+                  let colo1=document.querySelector('#t1');
+                  colo1.style.bckgroundColor="green";
+                  let borde=document.querySelector('#t1');
+                  borde.style.border="2px solid yellow";
+                  let borde1=document.querySelector('#p1');
+                  borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p1');
+                  text.style.color="white";
+                }
+              }
+
+            
+
+              
+              // ----------------------------2nd period---------------------------------
+              
               if(hr==10) {
-                if(mn>=00 && mn<=59) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>10:00 AM To 11:00 AM <br><br><b>Subject:</b>Principle Of Programming Language<br><br><b>Faculty Name:</b>Mr.Abdulla sir";
+                if(mn>15 && mn<=59) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>10:15 AM To 11:15 AM <br><br><b>Subject:</b>Principle Of Programming Language<br><br><b>Faculty Name:</b>Mr.-------- sir";
                   let colo=document.querySelector('#p2');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t2');
@@ -158,6 +187,8 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p2');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p2');
+                  text.style.color="white";
 
                   
                  
@@ -165,7 +196,23 @@
               }
               if(hr==11) {
                 if(mn>=00 && mn<=15) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>11:00 AM To 11:15 AM <br><br>Tea Break</b>";
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>10:15 AM To 11:15 AM <br><br><b>Subject:</b>Principle Of Programming Language<br><br><b>Faculty Name:</b>Mr.-------- sir";
+                  let colo=document.querySelector('#p2');
+                  colo.style.backgroundColor="green";
+                  let colo1=document.querySelector('#t2');
+                  colo1.style.backgroundColor="green";
+                  let borde=document.querySelector('#t2');
+                  borde.style.border="2px solid yellow";
+                  let borde1=document.querySelector('#p2');
+                  borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p2');
+                  text.style.color="white";
+                }
+              }
+              // -------------------------------3rd period-break------------------------------
+              if(hr==11) {
+                if(mn>15 && mn<=20) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>11:15 AM To 11:20 AM <br><br>Tea Break</b>";
                   let colo=document.querySelector('#p3');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t3');
@@ -174,11 +221,15 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p3');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p3');
+                  text.style.color="white";
                 }
               }
+              // ----------------------------------4th period--------------------------------------
+
               if(hr==11) {
-                if(mn>15 && mn<=59) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>11:15 AM To 12:15 PM <br><br><b>Subject:</b>Electronic circuits Devices<br><br><b>Faculty Name:</b>Mr.Prabhu sir";
+                if(mn>20 && mn<=59) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>11:20 AM To 12:20 PM <br><br><b>Subject:</b>Electronic circuits Devices<br><br><b>Faculty Name:</b>Mr.Manohar sir";
                   let colo=document.querySelector('#p4');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t4');
@@ -187,12 +238,16 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p4');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p4');
+                  text.style.color="white";
                 }
 
               }
+            }  //--------------am ended---------------  
+            if (ampm==pm_session) {
               if(hr==12) {
-                if(mn<=15) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>11:15 AM To 12:15 PM <br><br><b>Subject:</b>Electronic circuits Devices<br><br><b>Faculty Name:</b>Mr.Prabhu sir";
+                if(mn<=20) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>11:20 AM To 12:20 PM <br><br><b>Subject:</b>Electronic circuits Devices<br><br><b>Faculty Name:</b>Mr.manohar sir";
                   let colo=document.querySelector('#p4');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t4');
@@ -201,11 +256,14 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p4');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p4');
+                  text.style.color="white";
                 }
               }
+              // --------------------------5th period-----------------------------
               if(hr==12) {
-                if(mn>15 && mn<=59) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>12:15 PM To 01:15 PM <br><br>Library</b>";
+                if(mn>20 && mn<=59) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>12:20 PM To 01:20 PM <br><br>Library</b>";
                   let colo=document.querySelector('#p5');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t5');
@@ -214,11 +272,13 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p5');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p5');
+                  text.style.color="white";
                 }
               }
               if(hr==01) {
-                if(mn<=15) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>12:15 PM To 01:15 PM <br><br>Library</b>";
+                if(mn<=20) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>12:20 PM To 01:20 PM <br><br>Library</b>";
                   let colo=document.querySelector('#p5');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t5');
@@ -227,10 +287,14 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p5');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p5');
+                  text.style.color="white";
                 }
+                // ---------------------------------6th period lunch----------------------------------------
+
               }
               if(hr==01) {
-                if(mn>15 && mn<=59) {
+                if(mn>20 && mn<=59) {
                   document.getElementById('schedule').innerHTML="<b>Timing:</b>01:15 PM To 02:00 PM <br><br>Lunch Break";
                   let colo=document.querySelector('#p6');
                   colo.style.backgroundColor="green";
@@ -240,10 +304,14 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p6');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p6');
+                  text.style.color="white";
                 }
               }
+              // ------------------------------------------7th period-----------------------------
+
               
-              if(hr>=02 && hr<=05) {
+              if(hr>=02 && hr<=04) {
                 if(mn>=00 && mn<=59) {
                   document.getElementById('schedule').innerHTML="<b>Timing:</b>02:00 AM To 05:00 PM <br><br><b>Subject:Mobile Application Development Lab-2</b><br><br><b>Faculty Name:</b>Mr.--------- sir";
                   let colo=document.querySelector('#p7');
@@ -254,15 +322,57 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p7');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p7');
+                  text.style.color="white";
                 }
              
               }
-              if(hr>=05 && hr<09) {
-                if(mn>=00 && mn<=59) {
-                  document.getElementById('schedule').innerHTML="<b>University Timing is completed or University timing is not started</b>";
+              
+
+              
+            }
+              
+              // ---------------------------------AM/PM---------------------------------------
+              
+              if(ampm==pm_session) {
+                if(hr>=05 && hr<=11) {
+                  if(mn>=00 && mn<=59) {
+                    document.getElementById('schedule').innerHTML="<b>University Timing is completed</b>";
                   
+                  }
                 }
+                
               }
+
+
+              if(ampm==am_session) {
+                if(hr==12) {
+                  if(mn>=00 && mn<=59) {
+                    document.getElementById('schedule').innerHTML="<b>University Timing is Not Started</b>";
+                  }
+                }
+              }  
+                
+                if(ampm==am_session) {
+                  if(hr>=01 && hr<=08) {
+                    if(mn>=00 && mn<=59) {
+                      document.getElementById('schedule').innerHTML="<b>University Timing is Not Started</b>";
+                    }
+                  }
+                }
+                
+                
+                if(hr==09 ) {
+                  if(mn<15) {
+                    document.getElementById('schedule').innerHTML="<b>The university Time Table will be visible shortly</b>";
+
+                  }
+                }
+              
+              // -------------------------------------AM/PM ended------------------------------
+
+              
+              
 
               
           }    
@@ -292,10 +402,11 @@
            p7.innerHTML="Computer Networks Lab-2"
            
             var docx=document.getElementById('schedule').innerHTML;
-              // let hr=07;
+              // ------------------------1st period-------------------------
+              if(ampm==am_session) { 
               if(hr==09){
-                  if(mn>=00 && mn<=59) {
-                    document.getElementById('schedule').innerHTML="<b>Timing:</b>09:00 AM To 10:00 AM <br><br><b>Subject:</b>Mobile Application Development<br><br><b>Faculty Name:</b>Mr.------ sir";
+                  if(mn>=15 && mn<=59) {
+                    document.getElementById('schedule').innerHTML="<b>Timing:</b>09:15 AM To 10:15 AM <br><br><b>Subject:</b>Mobile Application Development<br><br><b>Faculty Name:</b>Mr.------ sir";
                     let colo=document.querySelector('#p1');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t1');
@@ -304,12 +415,32 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p1');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p1');
+                  text.style.color="white";
                   
                 }
               }
+              if (hr==10) {
+                if(mn>=00 && mn<=15) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>09:15 AM To 10:15 AM <br><br><b>Subject:</b>Mobile Application Development<br><br><b>Faculty Name:</b>Mr.------ sir";
+                    let colo=document.querySelector('#p1');
+                  colo.style.backgroundColor="green";
+                  let colo1=document.querySelector('#t1');
+                  colo1.style.backgroundColor="green";
+                  let borde=document.querySelector('#t1');
+                  borde.style.border="2px solid yellow";
+                  let borde1=document.querySelector('#p1');
+                  borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p1');
+                  text.style.color="white";
+              
+
+                }
+              }
+              // ------------------------------2nd period---------------------------------
               if(hr==10) {
-                if(mn>=00 && mn<=59) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>10:00 AM To 11:00 AM <br><br><b>Subject:</b>Software Engineering<br><br><b>Faculty Name:</b>Mr.Sivananda sir";
+                if(mn>15 && mn<=59) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>10:15 AM To 11:15 AM <br><br><b>Subject:</b>Software Engineering<br><br><b>Faculty Name:</b>Mr.Sivananda sir";
                   let colo=document.querySelector('#p2');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t2');
@@ -318,12 +449,32 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p2');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p2');
+                  text.style.color="white";
                   
                 }
               }
               if(hr==11) {
                 if(mn>=00 && mn<=15) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>11:00 AM To 11:15 AM <br><br>Tea Break</b>";
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>10:15 AM To 11:15 AM <br><br><b>Subject:</b>Software Engineering<br><br><b>Faculty Name:</b>Mr.Sivananda sir";
+                  let colo=document.querySelector('#p2');
+                  colo.style.backgroundColor="green";
+                  let colo1=document.querySelector('#t2');
+                  colo1.style.backgroundColor="green";
+                  let borde=document.querySelector('#t2');
+                  borde.style.border="2px solid yellow";
+                  let borde1=document.querySelector('#p2');
+                  borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p2');
+                  text.style.color="white";
+                  
+                
+                }
+              }
+              // --------------------------------3rd period-------------------------------
+              if(hr==11) {
+                if(mn>15 && mn<=20) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>11:15 AM To 11:20 AM <br><br>Tea Break</b>";
                   let colo=document.querySelector('#p3');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t3');
@@ -332,12 +483,15 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p3');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p3');
+                  text.style.color="white";
                   
                 }
               }
+              // ------------------------4th period--------------------------------------
               if(hr==11) {
-                if(mn>15 && mn<=59) {
-                document.getElementById('schedule').innerHTML="<b>Timing:</b>11:15 AM To 12:15 PM <br><br><b>Subject</b>:Principle of Programming Language / ICS<br><br><b>Faculty Name:</b>Mr.-------- sir";
+                if(mn>20 && mn<=59) {
+                document.getElementById('schedule').innerHTML="<b>Timing:</b>11:20 AM To 12:20 PM <br><br><b>Subject</b>:Principle of Programming Language / ICS<br><br><b>Faculty Name:</b>Mr.-------- sir";
                 let colo=document.querySelector('#p4');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t4');
@@ -346,13 +500,17 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p4');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p4');
+                  text.style.color="white";
                   
                 }
 
               }
+            }
+            if(ampm==pm_session) { 
               if(hr==12) {
-                if(mn<=15) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>11:15 AM To 12:15 PM <br><br><b>Subject</b>:Principle of Programming Language / ICS<br><br><b>Faculty Name:</b>Mr.-------- sir";
+                if(mn<=20) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>11:20 AM To 12:20 PM <br><br><b>Subject</b>:Principle of Programming Language / ICS<br><br><b>Faculty Name:</b>Mr.-------- sir";
                   let colo=document.querySelector('#p4');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t4');
@@ -361,11 +519,14 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p4');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p4');
+                  text.style.color="white";
                 }
               }
+              // ------------------------------------5th period-------------------------------
               if(hr==12) {
-                if(mn>15 && mn<=59) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>12:15 PM To 01:15 PM <br><br><b>Subject:</b>Electronic Device and circuit<br><br><b>Faculty Name:</b>Mr.----------sir";
+                if(mn>20 && mn<=59) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>12:20 PM To 01:20 PM <br><br><b>Subject:</b>Electronic Device and circuit<br><br><b>Faculty Name:</b>Mr.Manohar sir";
                   let colo=document.querySelector('#p5');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t5');
@@ -374,11 +535,13 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p5');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p5');
+                  text.style.color="white";
                 }
               }
               if(hr==01) {
-                if(mn<=15) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>12:15 PM To 01:15 PM <br><br><b>Subject:</b>Electronic Device and circuit<br><br><b>Faculty Name:</b>Mr.----------sir";
+                if(mn<=20) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>12:20 PM To 01:20 PM <br><br><b>Subject:</b>Electronic Device and circuit<br><br><b>Faculty Name:</b>Mr.Manohar sir";
                   let colo=document.querySelector('#p5');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t5');
@@ -387,11 +550,15 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p5');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p5');
+                  text.style.color="white";
                 }
               }
+              // ----------------------------6th period lunch break-------------------------------------
+
               if(hr==01) {
-                if(mn>15 && mn<=59) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>01:15 PM To 02:00 PM <br><br>Lunch Break";
+                if(mn>20 && mn<=59) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>01:20 PM To 02:00 PM <br><br>Lunch Break";
                   let colo=document.querySelector('#p6');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t6');
@@ -400,11 +567,14 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p6');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p6');
+                  text.style.color="white";
                 }
               }
+              // ------------------------------------7th period----------------------------------
               
               
-              if(hr>=02 && hr<=05) {
+              if(hr>=02 && hr<=04) {
                 if(mn>=00 && mn<=59) {
                   document.getElementById('schedule').innerHTML="<b>Timing:</b>02:00 AM To 05:00 PM<br><br><b>Subject:Computer Netrwork Lab-2</b><br><br><b>Faculty Name:</b>Mr.Abdullah sir";
                   let colo=document.querySelector('#p7');
@@ -415,14 +585,51 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p7');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p7');
+                  text.style.color="white";
                 }
              
               }
-              if(hr>=05 && hr<09) {
-                if(mn>=00 && mn<=59) {
-                  document.getElementById('schedule').innerHTML="<b>University Timing is completed or University timing is not started</b>";
+            }
+            // ---------------------------------AM/PM---------------------------------------
+              
+              if(ampm==pm_session) {
+                if(hr>=05 && hr<=11) {
+                  if(mn>=00 && mn<=59) {
+                    document.getElementById('schedule').innerHTML="<b>University Timing is completed</b>";
+                  
+                  }
                 }
+                
               }
+
+
+              if(ampm==am_session) {
+                if(hr==12) {
+                  if(mn>=00 && mn<=59) {
+                    document.getElementById('schedule').innerHTML="<b>University Timing is Not Started</b>";
+                  }
+                }
+              }  
+                
+                if(ampm==am_session) {
+                  if(hr>=01 && hr<=08) {
+                    if(mn>=00 && mn<=59) {
+                      document.getElementById('schedule').innerHTML="<b>University Timing is Not Started</b>";
+                    }
+                  }
+                }
+                
+                
+                if(hr==09 ) {
+                  if(mn<15) {
+                    document.getElementById('schedule').innerHTML="<b>The university Time Table will be visible shortly</b>";
+
+                  }
+                }
+              
+              // -------------------------------------AM/PM ended------------------------------
+
     
           }    
 // ------------------------------------------Wednesday----------------------------------------     
@@ -449,10 +656,11 @@
            
            
             var docx=document.getElementById('schedule').innerHTML;
-            
+            // -------------------------------1st period------------------------------------------
+            if(ampm==am_session) { 
               if(hr==09){
-                  if(mn>=00 && mn<=59) {
-                    document.getElementById('schedule').innerHTML="<b>Timing:</b>09:00 AM To 10:00 AM <br><br><b>Subject:</b>Computer Network<br><br><b>Faculty Name:</b>Mr.Abdullah sir";
+                  if(mn>=15 && mn<=59) {
+                    document.getElementById('schedule').innerHTML="<b>Timing:</b>09:15 AM To 10:15 AM <br><br><b>Subject:</b>Computer Network<br><br><b>Faculty Name:</b>Mr.Abdullah sir";
                     let colo=document.querySelector('#p1');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t1');
@@ -461,13 +669,32 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p1');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p1');
+                  text.style.color="white";
                   
                     
                 }
               }
               if(hr==10) {
-                if(mn>=00 && mn<=59) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>10:00 AM To 11:00 AM <br><br><b>Subject:</b>Mobile Application Development<br><br><b>Faculty Name:</b>Mr.---------- sir";
+                if (mn>=00 && mn<=15) {
+                   document.getElementById('schedule').innerHTML="<b>Timing:</b>09:15 AM To 10:15 AM <br><br><b>Subject:</b>Computer Network<br><br><b>Faculty Name:</b>Mr.Abdullah sir";
+                    let colo=document.querySelector('#p1');
+                  colo.style.backgroundColor="green";
+                  let colo1=document.querySelector('#t1');
+                  colo1.style.backgroundColor="green";
+                  let borde=document.querySelector('#t1');
+                  borde.style.border="2px solid yellow";
+                  let borde1=document.querySelector('#p1');
+                  borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p1');
+                  text.style.color="white";
+                }
+              }
+              // ---------------------------------2nd period-----------------------------------
+
+              if(hr==10) {
+                if(mn>15 && mn<=59) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>10:15 AM To 11:15 AM <br><br><b>Subject:</b>Mobile Application Development<br><br><b>Faculty Name:</b>Mr.---------- sir";
                   let colo=document.querySelector('#p2');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t2');
@@ -476,11 +703,29 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p2');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p2');
+                  text.style.color="white";
                 }
               }
               if(hr==11) {
-                if(mn>=00 && mn<=15) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>11:00 AM To 11:15 AM <br><br>Tea Break</b>";
+                 if (mn>=00 && mn<=15) {
+                    document.getElementById('schedule').innerHTML="<b>Timing:</b>10:15 AM To 11:15 AM <br><br><b>Subject:</b>Mobile Application Development<br><br><b>Faculty Name:</b>Mr.---------- sir";
+                  let colo=document.querySelector('#p2');
+                  colo.style.backgroundColor="green";
+                  let colo1=document.querySelector('#t2');
+                  colo1.style.backgroundColor="green";
+                  let borde=document.querySelector('#t2');
+                  borde.style.border="2px solid yellow";
+                  let borde1=document.querySelector('#p2');
+                  borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p2');
+                  text.style.color="white";
+                 }
+              }
+              // ------------------------------3rd period-------------------------------------
+              if(hr==11) {
+                if(mn>15 && mn<=20) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>11:15 AM To 11:20 AM <br><br>Tea Break</b>";
                   let colo=document.querySelector('#p3');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t3');
@@ -489,13 +734,16 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p3');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p3');
+                  text.style.color="white";
                   
 
                 }
               }
+              // -------------------------------4th period------------------------------------------
               if(hr==11) {
-                if(mn>15 && mn<=59) {
-                document.getElementById('schedule').innerHTML="<b>Timing:</b>11:15 AM To 12:15 PM <br><br>Subject:Software Engineering<br><br><b>Faculty Name:</b>Mr.Sivananda sir";
+                if(mn>20 && mn<=59) {
+                document.getElementById('schedule').innerHTML="<b>Timing:</b>11:20 AM To 12:20 PM <br><br>Subject:Software Engineering<br><br><b>Faculty Name:</b>Mr.Sivananda sir";
                 let colo=document.querySelector('#p4');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t4');
@@ -504,12 +752,16 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p4');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p4');
+                  text.style.color="white";
                 }
 
               }
+            }
+            if(ampm==pm_session) { 
               if(hr==12) {
-                if(mn<=15) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>11:15 AM To 12:15 PM <br><br>Subject:Software Engineering<br><br><b>Faculty Name:</b>Mr.Sivananda sir";
+                if(mn<=20) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>11:20 AM To 12:20 PM <br><br>Subject:Software Engineering<br><br><b>Faculty Name:</b>Mr.Sivananda sir";
                   let colo=document.querySelector('#p4');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t4');
@@ -518,11 +770,15 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p4');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p4');
+                  text.style.color="white";
                 }
               }
+              // -------------------------------5th period----------------------------------
+
               if(hr==12) {
-                if(mn>15 && mn<=59) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>12:15 PM To 01:15 PM <br><br><b>Subject:</b>Priciple of Programming Language/ ICS <br><br><b>Faculty Name:</b>Mr.----------sir";
+                if(mn>20 && mn<=59) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>12:20 PM To 01:20 PM <br><br><b>Subject:</b>Priciple of Programming Language/ ICS <br><br><b>Faculty Name:</b>Mr.----------sir";
                   let colo=document.querySelector('#p5');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t5');
@@ -531,11 +787,13 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p5');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p5');
+                  text.style.color="white";
                 }
               }
               if(hr==01) {
-                if(mn<=15) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>12:15 PM To 01:15 PM <br><br><b>Subject:</b>Priciple of Programming Language/ ICS <br><br><b>Faculty Name:</b>Mr.----------sir";
+                if(mn<=20) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>12:20 PM To 01:20 PM <br><br><b>Subject:</b>Priciple of Programming Language/ ICS <br><br><b>Faculty Name:</b>Mr.----------sir";
                   let colo=document.querySelector('#p5');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t5');
@@ -544,12 +802,16 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p5');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p5');
+                  text.style.color="white";
                 }
               }
+              // -----------------------------6th period lunch break-----------------------------------
+
              
               if(hr==01) {
-                if(mn>15 && mn<=59) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>01:15 PM To 02:00 PM <br><br>Lunch Break";
+                if(mn>20 && mn<=59) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>01:20 PM To 02:00 PM <br><br>Lunch Break";
                   let colo=document.querySelector('#p6');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t6');
@@ -558,12 +820,15 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p6');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p6');
+                  text.style.color="white";
                 }
               }
+              // -------------------------------7th period----------------------------------------
               
-              if(hr>=02 && hr<=05) {
+              if(hr>=02 && hr<=04) {
                 if(mn>=00 && mn<=59) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>02:00 AM To 05:00 PM <br><br><b>Subject:Electronic Devive And Circuit Lab-2</b><br><br><b>Faculty Name:</b>Mr.-------- sir";
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>02:00 AM To 05:00 PM <br><br><b>Subject:Electronic Devive And Circuit Lab-2</b><br><br><b>Faculty Name:</b>Mr.Manohar sir";
                   let colo=document.querySelector('#p7');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t7');
@@ -572,14 +837,51 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p7');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p7');
+                  text.style.color="white";
                 }
              
               }
-              if(hr>=05 && hr<09) {
-                if(mn>=00 && mn<=59) {
-                  document.getElementById('schedule').innerHTML="<b>University Timing is completed or University timing is not started</b>";
+            }
+              // ---------------------------------AM/PM---------------------------------------
+              
+              if(ampm==pm_session) {
+                if(hr>=05 && hr<=11) {
+                  if(mn>=00 && mn<=59) {
+                    document.getElementById('schedule').innerHTML="<b>University Timing is completed</b>";
+                  
+                  }
                 }
+                
               }
+
+
+              if(ampm==am_session) {
+                if(hr==12) {
+                  if(mn>=00 && mn<=59) {
+                    document.getElementById('schedule').innerHTML="<b>University Timing is Not Started</b>";
+                  }
+                }
+              }  
+                
+                if(ampm==am_session) {
+                  if(hr>=01 && hr<=08) {
+                    if(mn>=00 && mn<=59) {
+                      document.getElementById('schedule').innerHTML="<b>University Timing is Not Started</b>";
+                    }
+                  }
+                }
+                
+                
+                if(hr==09 ) {
+                  if(mn<15) {
+                    document.getElementById('schedule').innerHTML="<b>The university Time Table will be visible shortly</b>";
+
+                  }
+                }
+              
+              // -------------------------------------AM/PM ended------------------------------
+
           } 
 // -----------------------------------------Thursday-------------------------------------------
           if(select==4) {
@@ -603,23 +905,43 @@
            p7.innerHTML="Computer Networks Lab-2"
            
             var docx=document.getElementById('schedule').innerHTML;
-            
-              if(hr==09){
-                  if(mn>=00 && mn<=59) {
-                    document.getElementById('schedule').innerHTML="<b>Timing:</b>09:00 AM To 10:00 AM <br><br><b>Subject:</b>Electronics Devices and Circuit<br><br><b>Faculty Name:</b>Mr.----------sir";
+            // ---------------------------1st period------------------------------
+            if(ampm==am_session) { 
+              if(hr==09) {
+                  if(mn>=15 && mn<=59) {
+                    document.getElementById('schedule').innerHTML="<b>Timing:</b>09:15 AM To 10:15 AM <br><br><b>Subject:</b>Electronics Devices and Circuit<br><br><b>Faculty Name:</b>Mr.Manohar sir";
                     let colo=document.querySelector('#p1');
-                  colo.style.backgroundColor="green";
-                  let colo1=document.querySelector('#t1');
-                  colo1.style.backgroundColor="green";
-                  let borde=document.querySelector('#t1');
-                  borde.style.border="2px solid yellow";
-                  let borde1=document.querySelector('#p1');
-                  borde1.style.border="2px solid yellow";
+                    colo.style.backgroundColor="green";
+                    let colo1=document.querySelector('#t1');
+                    colo1.style.backgroundColor="green";
+                    let borde=document.querySelector('#t1');
+                    borde.style.border="2px solid yellow";
+                    let borde1=document.querySelector('#p1');
+                    borde1.style.border="2px solid yellow";
+                    let text=document.querySelector('#p1');
+                  text.style.color="white";
+                  }
                 }
-              }
+                if(hr==10) {
+                  if(mn>=00 && mn<=15) {
+                    document.getElementById('schedule').innerHTML="<b>Timing:</b>09:15 AM To 10:15 AM <br><br><b>Subject:</b>Electronics Devices and Circuit<br><br><b>Faculty Name:</b>Mr.Manohar sir";
+                    let colo=document.querySelector('#p1');
+                    colo.style.backgroundColor="green";
+                    let colo1=document.querySelector('#t1');
+                    colo1.style.backgroundColor="green";
+                    let borde=document.querySelector('#t1');
+                    borde.style.border="2px solid yellow";
+                    let borde1=document.querySelector('#p1');
+                    borde1.style.border="2px solid yellow";
+                    let text=document.querySelector('#p1');
+                  text.style.color="white";
+                  }
+                }
+                // ----------------------------------------2nd period---------------------------------
+              
               if(hr==10) {
-                if(mn>=00 && mn<=59) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>10:00 AM To 11:00 AM <br><br><b>Subject:</b>Computer Network <br><br><b>Faculty Name:</b>Mr.Abdullah sir";
+                if(mn>15 && mn<=59) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>10:15 AM To 11:15 AM <br><br><b>Subject:</b>Computer Network <br><br><b>Faculty Name:</b>Mr.Abdullah sir";
                   let colo=document.querySelector('#p2');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t2');
@@ -628,11 +950,29 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p2');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p2');
+                  text.style.color="white";
                 }
               }
               if(hr==11) {
                 if(mn>=00 && mn<=15) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>11:00 AM To 11:15 AM <br><br>Tea Break</b>";
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>10:15 AM To 11:15 AM <br><br><b>Subject:</b>Computer Network <br><br><b>Faculty Name:</b>Mr.Abdullah sir";
+                  let colo=document.querySelector('#p2');
+                  colo.style.backgroundColor="green";
+                  let colo1=document.querySelector('#t2');
+                  colo1.style.backgroundColor="green";
+                  let borde=document.querySelector('#t2');
+                  borde.style.border="2px solid yellow";
+                  let borde1=document.querySelector('#p2');
+                  borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p2');
+                  text.style.color="white";
+                }
+              }
+              // -----------------------------3rd period break----------------------------------------
+              if(hr==11) {
+                if(mn>=00 && mn<=15) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>11:15 AM To 11:20 AM <br><br>Tea Break</b>";
                   let colo=document.querySelector('#p3');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t3');
@@ -641,11 +981,15 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p3');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p3');
+                  text.style.color="white";
                 }
               }
+              // --------------------------------4th period----------------------------------------
+
               if(hr==11) {
-                if(mn>15 && mn<=59) {
-                document.getElementById('schedule').innerHTML="<b>Timing:</b>11:15 AM To 12:15 PM <br><br>Subject:Mobile Application Development<br><br><b>Faculty Name:</b>Mr.------- sir";
+                if(mn>20 && mn<=59) {
+                document.getElementById('schedule').innerHTML="<b>Timing:</b>11:20 AM To 12:20 PM <br><br>Subject:Mobile Application Development<br><br><b>Faculty Name:</b>Mr.------- sir";
                 let colo=document.querySelector('#p4');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t4');
@@ -654,12 +998,16 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p4');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p4');
+                  text.style.color="white";
                 }
 
               }
+            }
+            if(ampm==pm_session) { 
               if(hr==12) {
-                if(mn<=15) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>11:15 AM To 12:15 PM <br><br>Subject:Mobile Application Development<br><br><b>Faculty Name:</b>Mr.------- sir";
+                if(mn<=20) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>11:20 AM To 12:20 PM <br><br>Subject:Mobile Application Development<br><br><b>Faculty Name:</b>Mr.------- sir";
                   let colo=document.querySelector('#p4');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t4');
@@ -668,11 +1016,14 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p4');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p4');
+                  text.style.color="white";
                 }
               }
+              // -------------------------------------5th period---------------------------------
               if(hr==12) {
-                if(mn>15 && mn<=59) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>12:15 PM To 01:15 PM <br><br><b>Subject:</b>Test <br>";
+                if(mn>20 && mn<=59) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>12:20 PM To 01:20 PM <br><br><b>Subject:</b>Test <br>";
                   let colo=document.querySelector('#p5');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t5');
@@ -681,11 +1032,13 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p5');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p5');
+                  text.style.color="white";
                 }
               }
               if(hr==01) {
-                if(mn<=15) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>12:15 PM To 01:15 PM <br><br><b>Subject:</b>Test<br>";
+                if(mn<=20) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>12:20 PM To 01:20 PM <br><br><b>Subject:</b>Test<br>";
                   let colo=document.querySelector('#p5');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t5');
@@ -694,12 +1047,15 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p5');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p5');
+                  text.style.color="white";
                 }
               }
+              // --------------------------------------6th period lunch-------------------------------------
              
               if(hr==01) {
-                if(mn>15 && mn<=59) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>01:15 PM To 02:00 PM <br><br>Lunch Break";
+                if(mn>20 && mn<=59) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>01:20 PM To 02:00 PM <br><br>Lunch Break";
                   let colo=document.querySelector('#p6');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t6');
@@ -708,10 +1064,13 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p6');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p6');
+                  text.style.color="white";
                 }
               }
+              //------------------------------------7th period-------------------------------------
               
-              if(hr>=02 && hr<=05) {
+              if(hr>=02 && hr<=04) {
                 if(mn>=00 && mn<=59) {
                   document.getElementById('schedule').innerHTML="<b>Timing:</b>02:00 AM To 05:00 PM <br><br><b>Subject:Computer Networks Lab-2</b><br><br><b>Faculty Name:</b>Mr.Abdullah sir";
                   let colo=document.querySelector('#p7');
@@ -722,14 +1081,51 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p7');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p7');
+                  text.style.color="white";
                 }
              
               }
-              if(hr>=05 && hr<09) {
-                if(mn>=00 && mn<=59) {
-                  document.getElementById('schedule').innerHTML="<b>University Timing is completed or University timing is not started</b>";
+            }
+              // ---------------------------------AM/PM---------------------------------------
+              
+              if(ampm==pm_session) {
+                if(hr>=05 && hr<=11) {
+                  if(mn>=00 && mn<=59) {
+                    document.getElementById('schedule').innerHTML="<b>University Timing is completed</b>";
+                  
+                  }
                 }
+                
               }
+
+
+              if(ampm==am_session) {
+                if(hr==12) {
+                  if(mn>=00 && mn<=59) {
+                    document.getElementById('schedule').innerHTML="<b>University Timing is Not Started</b>";
+                  }
+                }
+              }  
+                
+                if(ampm==am_session) {
+                  if(hr>=01 && hr<=08) {
+                    if(mn>=00 && mn<=59) {
+                      document.getElementById('schedule').innerHTML="<b>University Timing is Not Started</b>";
+                    }
+                  }
+                }
+                
+                
+                if(hr==09 ) {
+                  if(mn<15) {
+                    document.getElementById('schedule').innerHTML="<b>The university Time Table will be visible shortly</b>";
+
+                  }
+                }
+              
+              // -------------------------------------AM/PM ended------------------------------
+
           }
 // ----------------------------------Friday------------------------------------------------------ #
 
@@ -755,11 +1151,13 @@
            p7.innerHTML="Electronics Devices And Circuit Lab"
            
             var docx=document.getElementById('schedule').innerHTML;
-            
+            // -----------------------------1st period-----------------------------------------
+
+             if(ampm==am_session) { 
               if(hr==09){
-                  if(mn>=00 && mn<=59) {
-                    document.getElementById('schedule').innerHTML="<b>Timing:</b>09:00 AM To 10:00 AM <br><br><b>Subject:</b>Software Engineering<br><br><b>Faculty Name:</b>Mr.Sivananda sir";
-                    let colo=document.querySelector('#p1');
+                  if(mn>=15 && mn<=59) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>09:15 AM To 10:15 AM <br><br><b>Subject:</b>Software Engineering<br><br><b>Faculty Name:</b>Mr.Sivananda sir";
+                  let colo=document.querySelector('#p1');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t1');
                   colo1.style.backgroundColor="green";
@@ -767,11 +1165,29 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p1');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p1');
+                  text.style.color="white";
                 }
               }
               if(hr==10) {
-                if(mn>=00 && mn<=59) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>10:00 AM To 11:00 AM <br><br><b>Subject:</b>Computer Network<br><br><b>Faculty Name:</b>Mr.Abdullah sir";
+                if(mn>=00 && mn<=15) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>09:15 AM To 10:15 AM <br><br><b>Subject:</b>Software Engineering<br><br><b>Faculty Name:</b>Mr.Sivananda sir";
+                  let colo=document.querySelector('#p1');
+                  colo.style.backgroundColor="green";
+                  let colo1=document.querySelector('#t1');
+                  colo1.style.backgroundColor="green";
+                  let borde=document.querySelector('#t1');
+                  borde.style.border="2px solid yellow";
+                  let borde1=document.querySelector('#p1');
+                  borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p1');
+                  text.style.color="white";
+                }
+              }
+              // -----------------------------2nd period---------------------------------------
+              if(hr==10) {
+                if(mn>15 && mn<=59) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>10:15 AM To 11:15 AM <br><br><b>Subject:</b>Computer Network<br><br><b>Faculty Name:</b>Mr.Abdullah sir";
                   let colo=document.querySelector('#p2');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t2');
@@ -780,11 +1196,30 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p2');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p2');
+                  text.style.color="white";
                 }
               }
               if(hr==11) {
                 if(mn>=00 && mn<=15) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>11:00 AM To 11:15 AM <br><br>Tea Break</b>";
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>10:15 AM To 11:15 AM <br><br><b>Subject:</b>Computer Network<br><br><b>Faculty Name:</b>Mr.Abdullah sir";
+                  let colo=document.querySelector('#p2');
+                  colo.style.backgroundColor="green";
+                  let colo1=document.querySelector('#t2');
+                  colo1.style.backgroundColor="green";
+                  let borde=document.querySelector('#t2');
+                  borde.style.border="2px solid yellow";
+                  let borde1=document.querySelector('#p2');
+                  borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p2');
+                  text.style.color="white";
+                }
+              }
+              // -----------------------------3rd period break-----------------------------------
+
+              if(hr==11) {
+                if(mn>15 && mn<=20) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>11:15 AM To 11:20 AM <br><br>Tea Break</b>";
                   let colo=document.querySelector('#p3');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t3');
@@ -793,11 +1228,15 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p3');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p3');
+                  text.style.color="white";
                 }
               }
+              // -------------------------4th period----------------------------------------------
+
               if(hr==11) {
-                if(mn>15 && mn<=59) {
-                document.getElementById('schedule').innerHTML="<b>Timing:</b>11:15 AM To 12:15 PM<br><br>Subject:Mobile Application Development<br><br><b>Faculty Name:</b>Mr.------------ sir";
+                if(mn>20 && mn<=59) {
+                document.getElementById('schedule').innerHTML="<b>Timing:</b>11:20 AM To 12:20 PM<br><br>Subject:Mobile Application Development<br><br><b>Faculty Name:</b>Mr.------------ sir";
                 let colo=document.querySelector('#p4');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t4');
@@ -806,12 +1245,16 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p4');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p4');
+                  text.style.color="white";
                 }
 
               }
+            }
+            if(ampm==pm_session) { 
               if(hr==12) {
-                if(mn<=15) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>11:15 AM To 12:15 PM <br><br><b>Subject:</b>Mobile Application Development<br><br><b>Faculty Name:</b>Mr.------------ sir";
+                if(mn<=20) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>11:20 AM To 12:20 PM <br><br><b>Subject:</b>Mobile Application Development<br><br><b>Faculty Name:</b>Mr.------------ sir";
                   let colo=document.querySelector('#p4');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t4');
@@ -820,11 +1263,14 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p4');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p4');
+                  text.style.color="white";
                 }
               }
+              // ----------------------------5th period-------------------------------------
               if(hr==12) {
-                if(mn>15 && mn<=59) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>12:15 PM To 01:15 PM <br><br><b>Subject:</b>Mandatory Non-credit Course-1Indian Constitution ICS <br>";
+                if(mn>20 && mn<=59) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>12:20 PM To 01:20 PM <br><br><b>Subject:</b>Mandatory Non-credit Course-1Indian Constitution ICS <br>";
                   let colo=document.querySelector('#p5');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t5');
@@ -833,11 +1279,13 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p5');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p5');
+                  text.style.color="white";
                 }
               }
               if(hr==01) {
-                if(mn<=15) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>12:15 PM To 01:15 PM <br><br><b>Subject:</b>Mandatory Non-credit Course-1<br>Indian Constitution ICS <br><br>";
+                if(mn<=20) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>12:20 PM To 01:20 PM <br><br><b>Subject:</b>Mandatory Non-credit Course-1<br>Indian Constitution ICS <br><br>";
                   let colo=document.querySelector('#p5');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t5');
@@ -846,12 +1294,16 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p5');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p5');
+                  text.style.color="white";
                 }
               }
+              // ---------------------------------6th period lunch----------------------------------
+
              
               if(hr==01) {
-                if(mn>15 && mn<=59) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>01:15 PM To 02:00 PM <br><br>Lunch Break";
+                if(mn>20 && mn<=59) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>01:20 PM To 02:00 PM <br><br>Lunch Break";
                   let colo=document.querySelector('#p6');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t6');
@@ -860,12 +1312,16 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p6');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p6');
+                  text.style.color="white";
                 }
               }
+              // ------------------------------------7th period--------------------------------------
+
               
-              if(hr>=02 && hr<=05) {
+              if(hr>=02 && hr<=04) {
                 if(mn>=00 && mn<=59) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>02:00 AM To 05:00 PM <br><br><b>Subject:Electronic Devive And Circuit Lab-2</b><br><br><b>Faculty Name:</b>Mr.-------- sir";
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>02:00 AM To 05:00 PM <br><br><b>Subject:Electronic Devive And Circuit Lab-2</b><br><br><b>Faculty Name:</b>Mr.Manohar sir";
                   let colo=document.querySelector('#p7');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t7');
@@ -874,17 +1330,54 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p7');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p7');
+                  text.style.color="white";
                 }
              
               }
-              if(hr>=05 && hr<09) {
-                if(mn>=00 && mn<=59) {
-                  document.getElementById('schedule').innerHTML="<b>University Timing is completed or University timing is not started</b>";
+            }
+            // ---------------------------------AM/PM---------------------------------------
+              
+              if(ampm==pm_session) {
+                if(hr>=05 && hr<=11) {
+                  if(mn>=00 && mn<=59) {
+                    document.getElementById('schedule').innerHTML="<b>University Timing is completed</b>";
+                  
+                  }
                 }
+                
               }
+
+
+              if(ampm==am_session) {
+                if(hr==12) {
+                  if(mn>=00 && mn<=59) {
+                    document.getElementById('schedule').innerHTML="<b>University Timing is Not Started</b>";
+                  }
+                }
+              }  
+                
+                if(ampm==am_session) {
+                  if(hr>=01 && hr<=08) {
+                    if(mn>=00 && mn<=59) {
+                      document.getElementById('schedule').innerHTML="<b>University Timing is Not Started</b>";
+                    }
+                  }
+                }
+                
+                
+                if(hr==09 ) {
+                  if(mn<15) {
+                    document.getElementById('schedule').innerHTML="<b>The university Time Table will be visible shortly</b>";
+
+                  }
+                }
+              
+              // -------------------------------------AM/PM ended------------------------------
           }
 // ----------------------------------Saturday----------------------------------------------
           if(select==6) {
+  
             let heading = document.getElementById("day-heading");
            heading.innerHTML="<B>Saturday</B>";
            let heading1 = document.getElementById("day-heading1");
@@ -904,10 +1397,11 @@
            let p7=document.getElementById('p7');
            p7.innerHTML="Mobile Appilcation Development Lab-2"
             var docx=document.getElementById('schedule').innerHTML;
-            
+            // ---------------------------1st period----------------------------------------------------------
+             if(ampm==am_session) { 
               if(hr==09){
-                  if(mn>=00 && mn<=59) {
-                    document.getElementById('schedule').innerHTML="<b>Timing:</b>09:00 AM To 10:00 AM <br><br><b>Subject:</b>Computer Network<br><br><b>Faculty Name:</b>Mr.Abdullah sir";
+                  if(mn>=15 && mn<=59) {
+                    document.getElementById('schedule').innerHTML="<b>Timing:</b>09:15 AM To 10:15 AM <br><br><b>Subject:</b>Computer Network<br><br><b>Faculty Name:</b>Mr.Abdullah sir";
                     let colo=document.querySelector('#p1');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t1');
@@ -916,11 +1410,29 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p1');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p1');
+                  text.style.color="white";
                 }
               }
               if(hr==10) {
-                if(mn>=00 && mn<=59) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>10:00 AM To 11:00 AM <br><br><b>Subject:</b>Electronic Devices and Circuit<br><br><b>Faculty Name:</b>Mr.---------- sir";
+                if(mn>=00 && mn<=15) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>09:15 AM To 10:15 AM <br><br><b>Subject:</b>Computer Network<br><br><b>Faculty Name:</b>Mr.Abdullah sir";
+                    let colo=document.querySelector('#p1');
+                  colo.style.backgroundColor="green";
+                  let colo1=document.querySelector('#t1');
+                  colo1.style.backgroundColor="green";
+                  let borde=document.querySelector('#t1');
+                  borde.style.border="2px solid yellow";
+                  let borde1=document.querySelector('#p1');
+                  borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p1');
+                  text.style.color="white";
+                }
+              }
+              // --------------------------------2nd period---------------------------------------------
+              if(hr==10) {
+                if(mn>15 && mn<=59) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>10:15 AM To 11:15 AM <br><br><b>Subject:</b>Electronic Devices and Circuit<br><br><b>Faculty Name:</b>Mr.Manohar sir";
                   let colo=document.querySelector('#p2');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t2');
@@ -929,11 +1441,29 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p2');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p2');
+                  text.style.color="white";
                 }
               }
               if(hr==11) {
-                if(mn>=00 && mn<=15) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>11:00 AM To 11:15 AM <br><br>Tea Break";
+                 if(mn>=00 && mn<=15) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>10:15 AM To 11:15 AM <br><br><b>Subject:</b>Electronic Devices and Circuit<br><br><b>Faculty Name:</b>Mr.manohar sir";
+                  let colo=document.querySelector('#p2');
+                  colo.style.backgroundColor="green";
+                  let colo1=document.querySelector('#t2');
+                  colo1.style.backgroundColor="green";
+                  let borde=document.querySelector('#t2');
+                  borde.style.border="2px solid yellow";
+                  let borde1=document.querySelector('#p2');
+                  borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p2');
+                  text.style.color="white";
+                 }
+              }
+              // ------------------------------------------3rd period break---------------------------------------
+              if(hr==11) {
+                if(mn>15 && mn<=20) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>11:15 AM To 11:20 AM <br><br>Tea Break";
                   let colo=document.querySelector('#p3');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t3');
@@ -942,11 +1472,15 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p3');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p3');
+                  text.style.color="white";
                 }
               }
+              // ----------------------------------------4th period----------------------------------------
+
               if(hr==11) {
-                if(mn>15 && mn<=59) {
-                document.getElementById('schedule').innerHTML="<b>Timing:</b>11:15 AM To 12:15 PM<br><br>Subject:Mandatory Non-credit Course-1 Indian Constitution ICS<br><br>";
+                if(mn>20 && mn<=59) {
+                document.getElementById('schedule').innerHTML="<b>Timing:</b>11:20 AM To 12:20 PM<br><br>Subject:Mandatory Non-credit Course-1 Indian Constitution ICS<br><br>";
                 let colo=document.querySelector('#p4');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t4');
@@ -955,12 +1489,16 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p4');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p4');
+                  text.style.color="white";
                 }
 
               }
+            }
+            if(ampm==pm_session) { 
               if(hr==12) {
-                if(mn<=15) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>11:15 AM To 12:15 PM <br><br>Subject:Mandatory Non-credit Course-1 Indian Constitution ICS<br>";
+                if(mn<=20) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>11:20 AM To 12:20 PM <br><br>Subject:Mandatory Non-credit Course-1 Indian Constitution ICS<br>";
                   let colo=document.querySelector('#p4');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t4');
@@ -969,11 +1507,15 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p4');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p4');
+                  text.style.color="white";
                 }
               }
+              // --------------------------------------5th period-----------------------------
+
               if(hr==12) {
-                if(mn>15 && mn<=59) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>12:15 PM To 01:15 PM <br><br><b>Subject:</b>Priciple of Programming Language/ ICS <br><br><b>Faculty Name:</b>Mr.----------sir";
+                if(mn>20 && mn<=59) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>12:20 PM To 01:20 PM <br><br><b>Subject:</b>Priciple of Programming Language/ ICS <br><br><b>Faculty Name:</b>Mr.----------sir";
                   let colo=document.querySelector('#p5');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t5');
@@ -982,11 +1524,13 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p5');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p5');
+                  text.style.color="white";
                 }
               }
               if(hr==01) {
-                if(mn<=15) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>12:15 PM To 01:15 PM <br><br><b>Subject:</b>Priciple of Programming Language/ ICS <br><br><b>Faculty Name:</b>Mr.----------sir";
+                if(mn<=20) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>12:20 PM To 01:20 PM <br><br><b>Subject:</b>Priciple of Programming Language/ ICS <br><br><b>Faculty Name:</b>Mr.----------sir";
                   let colo=document.querySelector('#p5');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t5');
@@ -995,12 +1539,15 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p5');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p5');
+                  text.style.color="white";
                 }
               }
+              // ---------------------------------6th period lunch break------------------------------------
              
               if(hr==01) {
-                if(mn>15 && mn<=59) {
-                  document.getElementById('schedule').innerHTML="<b>Timing:</b>01:15 PM To 02:00 PM <br><br>Lunch Break</b>";
+                if(mn>20 && mn<=59) {
+                  document.getElementById('schedule').innerHTML="<b>Timing:</b>01:20 PM To 02:00 PM <br><br>Lunch Break</b>";
                   let colo=document.querySelector('#p6');
                   colo.style.backgroundColor="green";
                   let colo1=document.querySelector('#t6');
@@ -1009,10 +1556,13 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p6');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p6');
+                  text.style.color="white";
                 }
               }
+              // -------------------------------------7th period------------------------------------
               
-              if(hr>=02 && hr<=05) {
+              if(hr>=02 && hr<=04) {
                 if(mn>=00 && mn<=59) {
                   document.getElementById('schedule').innerHTML="<b>Timing:</b>02:00 AM To 05:00 PM <br><br><b>Subject:Mobile Application Decvelopment Lab-2</b><br><br><b>Faculty Name:</b>Mr.-------- sir";
                   let colo=document.querySelector('#p7');
@@ -1023,21 +1573,58 @@
                   borde.style.border="2px solid yellow";
                   let borde1=document.querySelector('#p7');
                   borde1.style.border="2px solid yellow";
+                  let text=document.querySelector('#p7');
+                  text.style.color="white";
                 }
              
               }
-              if(hr>=05 && hr<09) {
-                if(mn>=00 && mn<=59) {
-                  document.getElementById('schedule').innerHTML="<b>University Timing is completed or University timing is not started</b>";
+            }
+             // ---------------------------------AM/PM---------------------------------------
+              
+              if(ampm==pm_session) {
+                if(hr>=05 && hr<=11) {
+                  if(mn>=00 && mn<=59) {
+                    document.getElementById('schedule').innerHTML="<b>University Timing is completed</b>";
+                  
+                  }
                 }
+                
               }
+
+
+              if(ampm==am_session) {
+                if(hr==12) {
+                  if(mn>=00 && mn<=59) {
+                    document.getElementById('schedule').innerHTML="<b>University Timing is Not Started</b>";
+                  }
+                }
+              }  
+                
+                if(ampm==am_session) {
+                  if(hr>=01 && hr<=08) {
+                    if(mn>=00 && mn<=59) {
+                      document.getElementById('schedule').innerHTML="<b>University Timing is Not Started</b>";
+                    }
+                  }
+                }
+                
+                
+                if(hr==09 ) {
+                  if(mn<15) {
+                    document.getElementById('schedule').innerHTML="<b>The university Time Table will be visible shortly</b>";
+
+                  }
+                }
+              
+              // -------------------------------------AM/PM ended------------------------------
+
           }
         // --------------------------Schedule completed upto here-------------------------------------          
       
       hr=hr<10 ? "0"+hr:hr
       mn=mn<10 ? "0"+mn :mn
       sc=sc<10 ? "0"+sc:sc
-      fullTime=hr+":"+mn+":"+sc +" " 
+      fullTime=hr+":"+mn+":"+sc +":"+ampm 
       
     
     
@@ -1066,12 +1653,5 @@
       
     }
   }
-      
-    
-    
-  
-    
-
-    
-  </script>
+ </script>
 </html>
