@@ -59,7 +59,7 @@ body {
  
   margin-top: 10px;
   border: 2px solid black;
-  height: 1100px;
+  height: 1200px;
   width: 100%;
   border-radius: 20px;
   padding: 50px 50px 50px 50px;
@@ -88,14 +88,27 @@ select {
 #sch {
   border: 2px solid rgb(253, 252, 252);
   margin-top: 50px;
-  height: 450px;
-  font-size: 26px;
+  height: 550px;
+  font-size: 35px;
   border-radius: 20px;
   padding: 30px 50px 50px 50px;
  
   background-color:rgba(24, 21, 21, 0.9);
   /* background-color: transparent; */
+  background-image: url("back.jpg");
+  background-size: 220dvh;
+  
+  
+  
+    
+    /* max-width: fit-content; */
   }
+  
+  #schedule {
+    background-color:rgba(24, 21, 21, 0.6);
+    /* opacity: none; */
+  }
+  
   
   #ope {
     margin-right: 10px;
