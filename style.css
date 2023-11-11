@@ -96,7 +96,7 @@ select {
   background-color:rgba(24, 21, 21, 0.9);
   /* background-color: transparent; */
   background-image: url("back.jpg");
-  background-size: 220dvh;
+  background-size: cover;
   
   
   
