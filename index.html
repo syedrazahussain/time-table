@@ -1047,7 +1047,7 @@
               }
               // -----------------------------3rd period break----------------------------------------
               if(hr==11) {
-                if(mn>=00 && mn<=15) {
+                if(mn>15 && mn<=20) {
                   document.getElementById('schedule').innerHTML="<b>Timing:</b>11:15 AM To 11:20 AM <br><br>Tea Break</b>";
                   let colo=document.querySelector('#p3');
                   colo.style.backgroundColor="green";
