@@ -97,6 +97,7 @@ select {
   /* background-color: transparent; */
   background-image: url("back.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
   
   
   
