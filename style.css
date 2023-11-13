@@ -6,6 +6,18 @@ p {
    font-family: arial;
    font-weight: bolder;
    /* border: 2px solid yellow; */
+   animation: animate 1s ease-in-out infinite alternate;
+   letter-spacing: 3px;
+   
+}
+@keyframes animate {
+    from {
+      text-shadow: 0 0 15px yellow,0 0 30px yellow,0 0 60px yellow;
+      text-shadow: 0 0 15px red,0 0 30px red,0 0 60px red;
+    }
+    to {
+      text-shadow: 0 0 15px green,0 0 30px green,0 0 60px green;
+    }
 }
 #heading {
   border: 2px solid rgb(255, 0, 200);
@@ -13,8 +25,11 @@ p {
   border-radius: 10px;
   margin-left: 50px;
   width: 100%;
+  box-shadow: 0 0 5px cyan,0 0 10px cyan,0 0 40px cyan;
+  margin-top: 40px;
   
 }
+
 body {
   background-color: black;
   color: white;
@@ -22,10 +37,12 @@ body {
 }
 #choose {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  /* background-color:rgba(24, 21, 21, 0.7); */
+  
   border-radius: 10%;
   padding-left:15px;
   font-size: 25px;
+  margin-right: 20px;
+  
   
 }
 #time {
@@ -33,19 +50,70 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 40px;
-  background-color: red;
+  background-color: #2d2f38;
   height: 60px;
   font-weight: bold;
   color: white;
   border: 2px solid rgb(215, 252, 5);
-  border-radius: 50px;
+  border-radius: 30px;
   margin-left:50px;
   width: 100%;
+  margin-top: 40px;
+  box-shadow: 0 5px 25px rgba(14,21,37,.8);
+  
+  
+  
+  
   
 }
+#tim::before {
+  position: absolute;
+  content: " ";
+  background: linear-gradient(45deg,rgb(8, 8, 235),orange,green);
+  background-size: 200% 200%;
+  top:-5px;
+  left:-5px;
+  bottom:-5px;
+  right:-5px;
+  z-index: -1;
+  filter: blur(20px); 
+  width: 100%;
+  margin-left: 65px;
+  
+  
+  animation: glowing 5s ease-in-out infinite;
+}
+@keyframes glowing {
+    0% {
+      background-position: 0% 50%;
+    }
+     50% {
+      background-position: 100% 50%;
+    }
+     100% {
+      background-position: 0% 50%;
+    }
+
+}
+#tim    {
+  transform: translate(10px);
+  margin-top: 70px;
+  z-index: -1;
+  background: -webkit-linear-gradient(90deg,blue,white);
+              
+              -webkit-text-fill-color: yellow;
+              -webkit-background-clip: text;
+  /* background-color: #2d2f38; */
+  color: white;
+  margin-right: 10px;
+  
+  
+  
+}
+
 .select-area {
   border: 2px solid rgb(248, 248, 248);
-  width:35%;
+  width:40%;
   height: 60px;
   display: flex;
   justify-content: center;
@@ -81,6 +149,8 @@ select {
   border: 2px solid yellow;
   cursor:pointer;
   margin-left: 20px;
+  width: 25%;
+  
 
   
 }
@@ -145,7 +215,9 @@ select {
   /* align-items: center; */
   transition: ease-in-out 500ms ;
   background-color:rgba(24, 21, 21, 0.9);
+  animation:animate 3s ease-in-out infinite alternate;
 }
+
 #view:hover{
   background-color: rgb(46, 47, 48);
 }
@@ -180,3 +252,4 @@ table {
   
   
 }
+
