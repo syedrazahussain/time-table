@@ -6,11 +6,13 @@ p {
    font-family: arial;
    font-weight: bolder;
    /* border: 2px solid yellow; */
-   animation: animate 1s ease-in-out infinite alternate;
+   /* animation: animate 1s ease-in-out infinite alternate; */
+   color: white;
+   
    letter-spacing: 3px;
    
 }
-@keyframes animate {
+/* @keyframes animate {
     from {
       
       text-shadow: 0 0 15px red,0 0 30px red,0 0 60px red;
@@ -18,7 +20,7 @@ p {
     to {
       text-shadow: 0 0 15px green,0 0 30px green,0 0 60px green;
     }
-}
+} */
 #heading {
   border: 2px solid rgb(255, 0, 200);
   margin-bottom: 20px;
