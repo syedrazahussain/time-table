@@ -110,6 +110,40 @@
     // if (hr>=12) {
     //   session="AM"
     // }
+
+          //-------- ----------------------night notification Timings---------------------------
+
+           if(ampm==pm_session) {
+              if(hr==07 && mn==00 ) {
+                  if(sc==00) {
+                    document.getElementById('schedule').innerHTML="<b>The university Time Table will be visible shortly</b>";
+                    function showNotification() {
+          const notification=new Notification("Remindering Tommorrow's Time Table!",{
+            body:"Once Open And See it",
+            icon:"logo.jpg",
+          });
+          notification.onclick=(e) => {
+            window.location.href="https://syedrazahussain.github.io/time-table/";
+          };
+
+        }
+    // default,granted,denied
+    if(Notification.permission==="granted"){
+      showNotification();
+    } else if (Notification.permission!=="denied") {
+      Notification.requestPermission().then(permission => {
+        if(permission==="granted") {
+          showNotification();
+        }
+      });
+    }
+  
+                    
+
+                  }
+                }
+           }
+  // ----------------------------------night notification ended----------------
     var select=document.getElementById('ope').value;
 
     
