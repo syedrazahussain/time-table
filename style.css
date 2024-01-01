@@ -563,6 +563,13 @@ select {
   
   
 }
+#day-heading b {
+  background-color: white;
+  border-radius: 30px;
+  width: 50%;
+  
+  text-align: center;
+  }
 #view {
   border: 2px solid rgb(253, 252, 252);
   width: 100%;
@@ -632,6 +639,7 @@ table {
   
 }
 
+
 header {
   margin-bottom: 100px;
   height: 50px;
@@ -647,7 +655,7 @@ header {
   width: 100%;
   margin-left: -40px;
   margin-top: 32px;
-  font-size: 40px;
+  font-size: 30px;
   font-family:'Times New Roman', Times, serif;
   font-weight: bold;
   /* padding-left: 20px; */
@@ -685,6 +693,9 @@ header {
   margin-top: 5px;
   font-family: 'Times New Roman', Times, serif;
 }
+.drop-item-home {
+  margin-left: 30px;
+ }
 
 
 
