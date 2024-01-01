@@ -95,7 +95,8 @@ body {
     font-weight: bold;
 }
 .terms a {
-    text-decoration: none;
+  text-decoration: none;
+  font-size: 12px;
 }
 .develop {
     display: flex;
@@ -307,7 +308,7 @@ header {
       width: 100%;
       margin-left: -40px;
       margin-top: 32px;
-      font-size: 40px;
+      font-size: 30px;
       font-family:'Times New Roman', Times, serif;
       font-weight: bold;
       /* padding-left: 20px; */
@@ -340,9 +341,9 @@ header {
 
     
 
-    .div p {
+    .div1 p {
       
-      font-size: 8px;
+      font-size: 10px;
       font-family: 'Times New Roman', Times, serif;
     }
     
@@ -368,6 +369,13 @@ header {
       
   
   }
+  .terms a {
+    text-decoration: none;
+    font-size: 12px;
+}
+.drop-item-home {
+  margin-left: 30px;
+ }
   
     
 
