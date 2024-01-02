@@ -339,7 +339,7 @@ header {
 }
 .header-name {
   width: 50%;
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-family:'Times New Roman', Times, serif;
   font-weight: bold;
   padding-left: 20px;
@@ -367,7 +367,7 @@ header {
   font-size: 1.2rem;
   cursor: pointer;
   font-family:'Times New Roman', Times, serif;
-  padding-right: 100px;
+  padding-right: 0px;
   
 }
 .header-content a {
