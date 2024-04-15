@@ -328,18 +328,18 @@ header {
   border-radius: 20px;
   margin-bottom: 50px;
   height: 50px;
-  width: 120%;
+  width: 100%;
   padding: 20px 20px 20px 20px;
   box-shadow: 0 0 5px white,0 0 10px white ;
   background-color: #282829;
-  margin-top: -0px;
+  margin-top: -2px;
 }
 .toogle-btn i {
   display: none;
 }
 .header-name {
   width: 50%;
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-family:'Times New Roman', Times, serif;
   font-weight: bold;
   padding-left: 20px;
@@ -364,10 +364,10 @@ header {
   align-content: center;
   width: 100%;
   align-items: center;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   cursor: pointer;
   font-family:'Times New Roman', Times, serif;
-  padding-right: 0px;
+  padding-right: 100px;
   
 }
 .header-content a {
@@ -425,7 +425,7 @@ ol i {
   border-radius: 20px;
   background-color: #1a1919;
   height: 70px;
-  width: 125%;
+  width: 100%;
   box-shadow: 0 0 5px white ;
   font-size: 14px;
   margin-bottom: -5px;
@@ -655,7 +655,7 @@ header {
   width: 100%;
   margin-left: -40px;
   margin-top: 32px;
-  font-size: 25px;
+  font-size: 20px;
   font-family:'Times New Roman', Times, serif;
   font-weight: bold;
   /* padding-left: 20px; */
